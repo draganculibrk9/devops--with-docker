@@ -1,2 +1,3 @@
-# devops--with-docker
-Repository for course DevOps with Docker of University of Helsinki
+# DevOps with Docker
+
+Repository for course [DevOps with Docker](https://devopswithdocker.com/) of University of Helsinki
