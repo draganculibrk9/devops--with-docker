@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  example-backend-service:
+    image: example-backend
+    container_name: example-backend
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - REDIS_HOST=redis-service
+      - POSTGRES_HOST=db
+  example-frontend-service:
+    image: example-frontend
+    container_name: example-frontend
+    build: .
+    ports:
+      - 5000:5000
+  redis-service:
+    image: redis:7.2.4
+    container_name: redis
+    build: .
+  db:
+    image: postgres:16.2
+    container_name: postgres-database
+    build: .
+    restart: unless-stopped
+    shm_size: 128mb
+    environment:
+      - POSTGRES_PASSWORD=postgres
