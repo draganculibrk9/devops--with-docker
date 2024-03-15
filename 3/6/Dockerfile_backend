@@ -1,0 +1,20 @@
+FROM golang:1.16.15
+
+WORKDIR /usr/src/app
+
+COPY go* .
+
+RUN useradd -m appuser && \
+    chown appuser . && \
+    go mod download
+
+COPY . .
+
+RUN go build && \
+    chmod +x ./server
+
+EXPOSE 8080
+
+USER appuser
+
+CMD ./server
